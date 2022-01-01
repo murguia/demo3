@@ -65,14 +65,22 @@ const TC = (props: TCProps) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {bodyArray?.length
-            ? bodyArray.map((outer, i) => (
+          {currEx?.length
+            ? currEx.map((currItem, i) => (
                 <TableRow>
-                  {outer.map((inner, j) => (
-                    <TableCell className={classes.cellStyle} key={i}>
-                      {inner}
-                    </TableCell>
-                  ))}
+                  <TableCell className={classes.cellStyle}>
+                    {currItem.name}
+                  </TableCell>
+                  <TableCell className={classes.cellStyle}>
+                    {currItem.val}
+                  </TableCell>
+                  {pastExData[currItem.name]?.length
+                    ? pastExData[currItem.name].map((exdata, exdata_index) => (
+                        <TableCell className={classes.cellStyle}>
+                          {exdata.val}
+                        </TableCell>
+                      ))
+                    : null}
                 </TableRow>
               ))
             : null}
