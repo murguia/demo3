@@ -13,6 +13,7 @@ import {
   Paper,
   makeStyles
 } from "@material-ui/core";
+import { ExProp, PrevExMap } from "./App";
 
 const useStyles = makeStyles(() => ({
   activityHeaderLabel: {
@@ -37,12 +38,14 @@ const useStyles = makeStyles(() => ({
 //const classes = useStyles()
 
 export interface TCProps {
-  bodyArray: string[][];
-  headerArray: string[];
+  prevDates: string[];
+  currEx: ExProp[];
+  pastExNames: ExProp[];
+  pastExData: PrevExMap;
 }
 
 const TC = (props: TCProps) => {
-  const { bodyArray, headerArray } = props;
+  const { prevDates, currEx, pastExNames, pastExData } = props;
   const classes = useStyles();
 
   return (
@@ -50,10 +53,12 @@ const TC = (props: TCProps) => {
       <Table stickyHeader aria-label="Treatments">
         <TableHead>
           <TableRow>
-            {headerArray?.length
-              ? headerArray.map((foo, index) => (
+            <TableCell className={classes.cellStyle}>Activity</TableCell>
+            <TableCell className={classes.cellStyle}>currDate</TableCell>
+            {prevDates?.length
+              ? prevDates.map((item, index) => (
                   <TableCell className={classes.cellStyle} key={index}>
-                    {foo}
+                    {item}
                   </TableCell>
                 ))
               : null}

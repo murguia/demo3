@@ -56,7 +56,12 @@ export default function App() {
 
   return (
     <div className="App">
-      <TC headerArray={headerData} bodyArray={bodyData} />
+      <TC
+        prevDates={prevDates}
+        currEx={currEx}
+        pastExNames={pastExNames}
+        pastExData={pastExData}
+      />
     </div>
   );
 }
